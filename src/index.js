@@ -4,9 +4,9 @@ module.exports = function zeros(expression) {
             return n ? n * factorialSimple(n - 1) : 1;
         }
 
-        //function factorialminTwo(n) {            
-        //       return n ? n * factorialSimple(n - 2) : 1;
-       // }
+        function factorialminTwo(n) {            
+              return n ? n * factorialSimple(n - 1)/(n - 2) : 1;
+       }
         var arr = expression.split("*");
         //console.log(arr);
         var mult=1;
@@ -33,7 +33,7 @@ module.exports = function zeros(expression) {
         } //for
         //console.log(mult);
    var str = mult+""; //to string   
-   //console.log(str);
+   console.log(str);
    //console.log(typeof(str));
     
     //zeros count
@@ -43,9 +43,10 @@ module.exports = function zeros(expression) {
      //console.log(matches_array);
       for (var k = matches_array.length; k--;){          
          zero = matches_array[k];
-          console.log(zero);
+          //console.log(zero);
           if(zero === '0'){
               zeroscount++;
+              console.log(zeroscount);
           }else{
               break;
           }             
