@@ -19,42 +19,36 @@ module.exports = function zeros(expression) {
             var l = fitem.lastIndexOf('!'); //count for !
             //console.log(l);
             if (x < 10) {
-                if (l === 1) {
-                    res = factorialSimple(x);
-                } else {
-                    res = factorialminTwo(x);
-                }
+              res = (l === 1) ? factorialSimple(x) : factorialminTwo(x);
             } //1
             else if (10 <= x < 100) {
-                if (l === 2) {
-                    res = factorialSimple(x);
-                } else {
-                    res = factorialminTwo(x);
-                }
+              res = (l === 2) ? factorialSimple(x) : factorialminTwo(x);
             } //2
-            else if (x = 100) {
-                if (l === 3) {
-                    res = factorialSimple(x);
-                } else {
-                    res = factorialminTwo(x);
-                }
+            else if(x = 100) {
+                res= (l === 3) ? factorialSimple(x) : factorialminTwo(x);
             } //3
-            mult*=res;
+            //console.log(mult);
+            mult*=res;//myltiply all items
+           // console.log(mult);
         } //for
-        console.log(mult);
-   var str = mult+"";    
+        //console.log(mult);
+   var str = mult+""; //to string   
    //console.log(str);
    //console.log(typeof(str));
     
     //zeros count
     var zeroscount = 0;
-    var zero;
-    var regexp = /0/g;
-    var matches_array = str.match(regexp);
-      for (k = 0; k < matches_array.length; k++){
+    var zero;    
+    var matches_array = str.split('');
+     //console.log(matches_array);
+      for (var k = matches_array.length; k--;){          
          zero = matches_array[k];
-          //console.log(zero);          
-        zeroscount++;         
+          console.log(zero);
+          if(zero === '0'){
+              zeroscount++;
+          }else{
+              break;
+          }             
       }//for     
     return zeroscount;
     } //zeros
