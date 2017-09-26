@@ -1,5 +1,39 @@
 module.exports = function zeros(expression) {
         // your solution
+//функция для умножения
+        function multiply(first, second) {
+        // your solution
+        if (parseInt(first) == 0 || parseInt(second) == 0) {
+            return '0';
+        }
+        first = first.split('').reverse();
+        second = second.split('').reverse();
+        var result = [];
+
+        for (var i = 0; first[i] >= 0; i++) {
+            for (var j = 0; second[j] >= 0; j++) {
+                if (!result[i + j]) {
+                    result[i + j] = 0;
+                }
+                result[i + j] += first[i] * second[j];
+                //console.log(result);
+            }
+        }
+        //console.log(result);
+        for (var i = 0; result[i] >= 0; i++) {
+            if (result[i] >= 10) {
+                if (!result[i + 1]) {
+                    result[i + 1] = 0;
+                }
+                result[i + 1] += parseInt(result[i] / 10);
+                result[i] %= 10;
+            }
+        } //for
+        //console.log(result);
+        return result.reverse().join('');
+    }//multiply
+    
+//функции для подсчета факториалов с разными шагами
         function factorialSimple(n) {
             return n ? n * factorialSimple(n - 1) : 1;
         }
@@ -7,9 +41,10 @@ module.exports = function zeros(expression) {
         function factorialminTwo(n) {            
               return n ? n * factorialSimple(n - 1)/(n - 2) : 1;
        }
+    //стартовый код zeros
         var arr = expression.split("*");
         //console.log(arr);
-        var mult=1;
+        var mult='1';
         var res;
         for (i = 0; i < arr.length; i++) {
             var fitem = arr[i];
@@ -27,20 +62,18 @@ module.exports = function zeros(expression) {
             else if(x = 100) {
                 res= (l === 3) ? factorialSimple(x) : factorialminTwo(x);
             } //3
-            //console.log(mult);
-            mult*=res;//myltiply all items
-           // console.log(mult);
+            res = res+"";            
+        //console.log(res);
+           mult = multiply(mult, res);//перемножаем
+           //console.log(mult);
         } //for
-        //console.log(mult);
-   var str = mult+""; //to string   
-   console.log(str);
-   //console.log(typeof(str));
-    
+        
     //zeros count
-    var zeroscount = 0;
+    var zeroscount = 0;//инициализация счетчика
     var zero;    
-    var matches_array = str.split('');
-     //console.log(matches_array);
+    var matches_array = mult.split('');
+     console.log(matches_array);
+    //считаем с последнего
       for (var k = matches_array.length; k--;){          
          zero = matches_array[k];
           //console.log(zero);
